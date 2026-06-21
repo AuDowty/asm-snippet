@@ -1,0 +1,18 @@
+[package]
+name = "asm-snippet"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Bidirectional x86/x64 assembler + disassembler CLI. Bytes <-> instructions."
+repository = "https://github.com/AuDowty/asm-snippet"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+iced-x86 = { version = "1.21", default-features = false, features = ["std", "decoder", "intel"] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
